@@ -11,9 +11,9 @@ std = StandardScaler()
 X = std.fit_transform(X)
 
 # gradient
-y0 = raw_data[:, 10]
+y0 = raw_data[:, 13]
 
-best_C0 = 9991
+best_C0 = 0
 best_mse0 = 10000000
 for it_C in range(1, 20000, 10):
     loo = LeaveOneOut()
@@ -25,44 +25,44 @@ for it_C in range(1, 20000, 10):
         best_mse0 = it_mse
         best_C0 = it_C
 print(best_C0)
-model0 = SVR(C=best_C0, gamma='auto')
+model0 = SVR(C=best_C0 / 100, gamma='auto')
 model0.fit(X, y0)
 print(model0.score(X, y0))
 
 # range
-# y1 = raw_data[:, 11]
+# y1 = raw_data[:, 12]
 # y2 = raw_data[:, 12]
 # y3 = raw_data[:, 13]
 
-# best_C1 = 9991
-# # best_mse1 = 10000000
-# # for it_C in range(1, 20000, 10):
-# #     loo = LeaveOneOut()
-# #     it_mse = 0.0
-# #     for train, test in loo.split(X):
-# #         it_mse += (SVR(C=it_C / 100, gamma='auto').fit(X=X[train], y=y1[train].reshape(-1)
-# #                                                        ).predict(X[test]) - y1[test][0])**2
-# #     if best_mse1 > it_mse:
-# #         best_mse1 = it_mse
-# #         best_C1 = it_C
-# # print(best_C1)
-# model1 = SVR(C=best_C1, gamma='auto')
+# best_C1 = 0
+# best_mse1 = 10000000
+# for it_C in range(1, 20000, 10):
+#     loo = LeaveOneOut()
+#     it_mse = 0.0
+#     for train, test in loo.split(X):
+#         it_mse += (SVR(C=it_C / 100, gamma='auto').fit(X=X[train], y=y1[train].reshape(-1)
+#                                                        ).predict(X[test]) - y1[test][0])**2
+#     if best_mse1 > it_mse:
+#         best_mse1 = it_mse
+#         best_C1 = it_C
+# print(best_C1)
+# model1 = SVR(C=best_C1 / 100, gamma='auto')
 # model1.fit(X, y1)
 # print(model1.score(X, y1))
 
-# best_C2 = 9991
-# # best_mse2 = 10000000
-# # for it_C in range(1, 20000, 10):
-# #     loo = LeaveOneOut()
-# #     it_mse = 0.0
-# #     for train, test in loo.split(X):
-# #         it_mse += (SVR(C=it_C / 100, gamma='auto').fit(X=X[train], y=y2[train].reshape(-1)
-# #                                                        ).predict(X[test]) - y2[test][0])**2
-# #     if best_mse2 > it_mse:
-# #         best_mse2 = it_mse
-# #         best_C2 = it_C
-# # print(best_C2)
-# model2 = SVR(C=best_C2, gamma='auto')
+# best_C2 = 0
+# best_mse2 = 10000000
+# for it_C in range(1, 20000, 10):
+#     loo = LeaveOneOut()
+#     it_mse = 0.0
+#     for train, test in loo.split(X):
+#         it_mse += (SVR(C=it_C / 100, gamma='auto').fit(X=X[train], y=y2[train].reshape(-1)
+#                                                        ).predict(X[test]) - y2[test][0])**2
+#     if best_mse2 > it_mse:
+#         best_mse2 = it_mse
+#         best_C2 = it_C
+# print(best_C2)
+# model2 = SVR(C=best_C2 / 100, gamma='auto')
 # model2.fit(X, y2)
 # print(model2.score(X, y2))
 
