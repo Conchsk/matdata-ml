@@ -27,7 +27,7 @@ class MyGridSearch:
                     check = False
                     break
             if check:
-                print(x_try)
+                # print(x_try)
                 y_hat = func(x_try)
                 if opt_y < y_hat:
                     opt_y = y_hat
